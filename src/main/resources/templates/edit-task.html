@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Task Management</title>
+  <title>Edit Task</title>
   <link rel="stylesheet" type="text/css" href="/tasks.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -17,24 +17,16 @@
 </head>
 <body>
 <div class="container">
-  <h1>Task Management</h1>
-  <form action="#" th:action="@{/tasks}" th:object="${task}" method="post">
+  <h1>Edit Task</h1>
+  <form th:action="@{/tasks/edit/{id}(id=${task.id})}" th:object="${task}" method="post">
     <label for="title">Title:</label>
     <input type="text" id="title" th:field="*{title}" /><br/>
     <label for="description">Description:</label>
     <input type="text" id="description" th:field="*{description}" /><br/>
     <label for="date">Date:</label>
     <input type="text" id="date" th:field="*{date}" /><br/>
-    <button type="submit">Add Task</button>
+    <button type="submit">Update Task</button>
   </form>
-  <h2>All Tasks</h2>
-  <ul>
-    <li th:each="task : ${tasks}">
-      <span th:text="${task.title}"></span>: <span th:text="${task.description}"></span> - <span th:text="${task.date}"></span>
-      <a th:href="@{/tasks/edit/{id}(id=${task.id})}"><button>Edit</button></a>
-      <a th:href="@{/tasks/delete/{id}(id=${task.id})}"><button>Delete</button></a>
-    </li>
-  </ul>
 </div>
 </body>
 </html>

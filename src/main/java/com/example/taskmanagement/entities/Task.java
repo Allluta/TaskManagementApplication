@@ -1,13 +1,13 @@
 package com.example.taskmanagement.entities;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+import java.time.LocalDate;
 
+@Entity
 public class Task {
 
     @Id
@@ -15,13 +15,16 @@ public class Task {
     private Long id;
     private String title;
     private String description;
+    private LocalDate date;
 
     public Task() {
     }
-    public Task(Long id, String title, String description) {
+
+    public Task(Long id, String title, String description, LocalDate date) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.date = date;
     }
 
     public Long getId() {
@@ -48,12 +51,21 @@ public class Task {
         this.description = description;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", date=" + date +
                 '}';
     }
 }
