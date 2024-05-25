@@ -1,11 +1,14 @@
 package com.example.taskmanagement.services;
 
 import com.example.taskmanagement.entities.Task;
+import com.example.taskmanagement.entities.User;
 import com.example.taskmanagement.repositories.TaskRepository;
+import com.example.taskmanagement.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -14,11 +17,23 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    private User getLoggedInUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+        return userRepository.findByUsername(username);
+    }
+
     public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+        User user = getLoggedInUser();
+        return taskRepository.findByUser(user);
     }
 
     public Task createTask(Task task) {
+        User user = getLoggedInUser();
+        task.setUser(user);
         return taskRepository.save(task);
     }
 

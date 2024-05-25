@@ -54,5 +54,4 @@ public class TaskController {
         taskService.deleteTask(id);
         return "redirect:/tasks";
     }
-
 }
