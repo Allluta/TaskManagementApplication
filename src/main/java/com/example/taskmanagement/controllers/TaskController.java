@@ -34,12 +34,7 @@ public class TaskController {
         return "redirect:/tasks";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editTaskForm(@PathVariable Long id, Model model) {
-        Task task = taskService.getTaskById(id);
-        model.addAttribute("task", task);
-        return "edit-task";
-    }
+
 
     @PostMapping("/edit/{id}")
     public String updateTask(@PathVariable Long id, @ModelAttribute Task task,
