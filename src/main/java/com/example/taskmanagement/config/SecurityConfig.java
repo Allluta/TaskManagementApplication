@@ -60,7 +60,7 @@ public class SecurityConfig {
                 )
                 .formLogin(form -> form
                         .usernameParameter("email")
-                        .defaultSuccessUrl("/list_users", true)
+                        .defaultSuccessUrl("/tasks", true)
                         .permitAll()
                 )
                 .logout(logout -> logout

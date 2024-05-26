@@ -1,6 +1,7 @@
 package com.example.taskmanagement.services;
 
 import com.example.taskmanagement.entities.Task;
+import com.example.taskmanagement.entities.User;
 import com.example.taskmanagement.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,9 @@ public class TaskService {
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
-
+    public List<Task> getTasksByUser(User user) {
+        return taskRepository.findByUser(user);
+    }
     public Task createTask(Task task) {
         return taskRepository.save(task);
     }
