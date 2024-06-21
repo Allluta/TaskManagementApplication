@@ -41,7 +41,7 @@ public class TaskController {
         model.addAttribute("tasks", tasks);
         model.addAttribute("task", new Task());
 
-        return "tasks"; // Zwraca widok "tasks.html"
+        return "tasks";
     }
 
     @PostMapping("/tasks")

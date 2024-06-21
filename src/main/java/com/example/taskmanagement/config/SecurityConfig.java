@@ -55,7 +55,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())  // Disable CSRF for simplicity; enable in production
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/home", "/register", "/styles.css", "/login", "/tasks", "/process_register", "/list_users").permitAll()  // Allow public access to these paths
+                        .requestMatchers("/", "/home", "/register", "/styles.css", "/login", "/tasks", "/process_register", "/list_users", "/api/register").permitAll()
+                        // Allow public access to these paths
                         .anyRequest().authenticated()  // Require authentication for all other requests
                 )
                 .formLogin(form -> form
@@ -64,6 +65,7 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .logout(logout -> logout
+                        .logoutSuccessUrl("/")
                         .permitAll()
                 );
 

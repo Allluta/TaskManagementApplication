@@ -1,5 +1,3 @@
-/* tasks.css */
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -16,7 +14,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h1, h2 {
     color: #333;
     margin-bottom: 20px;
 }
@@ -30,7 +28,7 @@ label {
     margin-bottom: 5px;
 }
 
-input[type="text"] {
+input[type="text"], input[type="date"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -83,40 +81,30 @@ li button {
 li button:hover {
     background-color: #e53935;
 }
-input[type="text"], input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
+.navbar-custom {
+    background-color: #343a40;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
+.navbar-custom .navbar-brand, .navbar-custom .nav-link {
+    color: #ffffff;
+}
+
+.navbar-custom .nav-link {
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    padding: 10px;
-    background-color: #f9f9f9;
-    margin-bottom: 5px;
     border-radius: 5px;
 }
 
-li span {
-    font-weight: bold;
-    margin-right: 10px;
+.navbar-custom .nav-link:hover {
+    background-color: #495057;
+}
+
+.btn {
+    margin-left: 10px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
